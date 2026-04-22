@@ -85,8 +85,8 @@ jobs:
         run: |
           jf --version
           jf rt ping
-          jf config show
           jf config use setup-jfrog-cli-server
+          jf config show
       - name: Set JF NPM Config
         run:  |
           jf npm config set registry ${{ env.JF_URL }}/artifactory/api/npm/$NPM_JF_RT_REPO/
@@ -110,7 +110,7 @@ jobs:
         run: |
           npm cache clean --force
           rm -rf package-lock.json
-          jf npmc --repo-resolve ${{ github.event.inputs.rt_npm_remote_repo_id }}
+          jf npmc --repo-resolve ${{ github.event.inputs.rt_npm_curation_remote_repo_id }}
           jf npm i --omit=dev
           
           if [ ${{ github.event.inputs.xr_enable_scan }} == 'true' ]; then
