@@ -86,6 +86,7 @@ jobs:
           jf --version
           jf rt ping
           jf config show
+          jf config use setup-jfrog-cli-server
       - name: Set JF NPM Config
         run:  |
           jf npm config set registry ${{ env.JF_URL }}/artifactory/api/npm/$NPM_JF_RT_REPO/
