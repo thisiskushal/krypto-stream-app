@@ -76,11 +76,11 @@ jobs:
           JF_URL: https://${{ vars.JF_URL }}/
           #JF_PROJECT: ${{ vars.JF_PROJECT }}
           # Use ONE of the following:
-          # JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
+          JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
           # OR
-        with:
-            oidc-provider-name: talet-github
-            oidc-audience: talet-audience
+        # with:
+           # oidc-provider-name: talet-github
+           # oidc-audience: talet-audience
             
       - name: NPM Curation Audit 
         run: |
