@@ -81,6 +81,19 @@ jobs:
         # with:
            # oidc-provider-name: talet-github
            # oidc-audience: talet-audience
+      - name: Health check JFrog Artifactory instance 🐸
+        run: |
+          jf --version
+          jf rt ping
+          jf config show
+      - name: Set JF NPM Config
+        run:  |
+          jf npm config set registry ${{ env.JF_URL }}/artifactory/api/npm/$NPM_JF_RT_REPO/
+          jf npm config list | jq -r .registry
+        env:
+          JF_URL: https://${{ vars.JF_URL }}/
+          NPM_JF_RT_REPO: ${{ github.event.inputs.rt_npm_curation_remote_repo_id }}
+
             
       - name: NPM Curation Audit 
         run: |
