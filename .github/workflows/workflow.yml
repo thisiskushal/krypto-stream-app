@@ -81,12 +81,14 @@ jobs:
         # with:
            # oidc-provider-name: talet-github
            # oidc-audience: talet-audience
+    
       - name: Health check JFrog Artifactory instance 🐸
         run: |
           jf --version
-          jf rt ping
           jf config use setup-jfrog-cli-server
+          jf rt ping
           jf config show
+
       - name: Set JF NPM Config
         run:  |
           jf npm config set registry ${{ env.JF_URL }}/artifactory/api/npm/$NPM_JF_RT_REPO/
